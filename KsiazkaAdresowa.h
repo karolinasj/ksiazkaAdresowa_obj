@@ -14,6 +14,8 @@ class KsiazkaAdresowa
 public:
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    KsiazkaAdresowa();
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami){
+        uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+    };
 };
 #endif
