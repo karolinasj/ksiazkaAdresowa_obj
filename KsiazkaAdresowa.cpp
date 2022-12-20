@@ -3,6 +3,10 @@
 #include <sstream>
 */
 
+KsiazkaAdresowa::KsiazkaAdresowa()
+{
+    uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+}
 void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
     uzytkownikMenedzer.rejestraciaUzytkownika();

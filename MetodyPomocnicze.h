@@ -12,7 +12,6 @@ using namespace std;
 class MetodyPomocnicze
 {
 
-
 public:
     KsiazkaAdresowa();
     static string konwerjsaIntNaString(int liczba);
