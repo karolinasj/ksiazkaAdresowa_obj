@@ -23,5 +23,6 @@ class UzytkonikMenedzer
 public:
     void rejestraciaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void wczytajUzytkownikowZPliku();
 };
 #endif
