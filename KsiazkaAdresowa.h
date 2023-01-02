@@ -11,14 +11,22 @@ class KsiazkaAdresowa
     /*int idOstatniegoAdresata;
     int idUsunietegoAdresata;*/
     UzytkonikMenedzer uzytkownikMenedzer;
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
 public:
+
+    void menu();
     void rejestracjaUzytkownika();
+    int logowanie();
     void wypiszWszystkichUzytkownikow();
-    void logowanieUzytkownika();
     int idZalogowanegoUzytkownika;
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami){
         uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+
+}
+
+
     };
 
-};
+
 #endif

@@ -10,8 +10,9 @@ int main()
 
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.rejestracjaUzytkownika();
-    ksiazkaAdresowa.logowanieUzytkownika();
-    cout << ksiazkaAdresowa.idZalogowanegoUzytkownika;
+    //ksiazkaAdresowa.logowanieUzytkownika();
+    ksiazkaAdresowa.menu();
+
 
     ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
     return 0;

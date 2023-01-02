@@ -15,6 +15,9 @@ class MetodyPomocnicze
 public:
     KsiazkaAdresowa();
     static string konwerjsaIntNaString(int liczba);
-    static string wczytajLinie(); //to te¿ na static?
+    static string wczytajLinie(); //to teÂ¿ na static?
+
+    static char wczytajZnak();
+
 };
 #endif
