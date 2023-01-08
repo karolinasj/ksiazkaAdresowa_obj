@@ -13,11 +13,14 @@ class MetodyPomocnicze
 {
 
 public:
-    KsiazkaAdresowa();
     static string konwerjsaIntNaString(int liczba);
-    static string wczytajLinie(); //to te¿ na static?
+    static string wczytajLinie();
 
     static char wczytajZnak();
+    static bool czyPlikJestPusty(fstream &plikTekstowy);
+    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static string pobierzLiczbe(string tekst, int pozycjaZnaku);
+    static int konwersjaStringNaInt(string liczba);
 
 };
 #endif

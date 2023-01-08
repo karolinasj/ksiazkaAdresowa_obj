@@ -14,6 +14,6 @@ int main()
     ksiazkaAdresowa.menu();
 
 
-    ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
+    //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
     return 0;
 }
