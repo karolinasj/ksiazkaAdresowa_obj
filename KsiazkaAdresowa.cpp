@@ -55,8 +55,8 @@ void KsiazkaAdresowa::menu()
             switch (wybor)
             {
             case '1':
-                //idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);//idZalogowanegoUzytkownika, idOstatniegoAdresata);
-                idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata, idZalogowanegoUzytkownika);
+                idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
+
                 break;
             case '2':
                 //wyszukajAdresatowPoImieniu(adresaci);
