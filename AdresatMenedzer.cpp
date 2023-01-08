@@ -18,7 +18,7 @@ using namespace std;
      idOstatniegoAdresata = 0;
  }
 
-int AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//vector <Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata)
+int AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
 
@@ -90,7 +90,7 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
 
-void AdresatMenedzer::wyswietlWszystkichAdresatow()//vector <Adresat> &adresaci)
+void AdresatMenedzer::wyswietlWszystkichAdresatow()
 {
     system("cls");
     if (!adresaci.empty())

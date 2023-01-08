@@ -116,5 +116,4 @@ void UzytkonikMenedzer::zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzy
         }
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
 }

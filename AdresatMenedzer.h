@@ -18,7 +18,7 @@ class AdresatMenedzer
 
 
 public:
-    int dodajAdresata(int idZalogowanegoUzytkownika);//adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
+    int dodajAdresata(int idZalogowanegoUzytkownika);
     int idOstatniegoAdresata;
     AdresatMenedzer();
     int wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika );
