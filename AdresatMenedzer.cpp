@@ -3,14 +3,10 @@
 #include "PlikZAdresatami.h"
 
 
-
-
-using namespace std;
-
- AdresatMenedzer::AdresatMenedzer()
+ /*AdresatMenedzer::AdresatMenedzer()
  {
      idOstatniegoAdresata = 0;
- }
+ }*/
 
 int AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
 {

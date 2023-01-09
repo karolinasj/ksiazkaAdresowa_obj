@@ -29,7 +29,7 @@ public:
     int idZalogowanegoUzytkownika;
     int ustawIdOstatniegoAdresata(int idOstAdr, int idZalogowanegoUzytkownika);
 
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami){
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami){
         uzytkownikMenedzer.wczytajUzytkownikowZPliku();
 
 }

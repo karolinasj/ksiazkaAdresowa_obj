@@ -2,10 +2,10 @@
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
 
-PlikZAdresatami::PlikZAdresatami()
+/*PlikZAdresatami::PlikZAdresatami()
 {
     nazwaPlikuZAdresatami = "Adresaci.txt";
-}
+}*/
 
 void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 {
