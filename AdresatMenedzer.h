@@ -3,6 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <windows.h>
+#include <algorithm>
+#include <sstream>
+
 
 #include "Adresat.h"
 #include "PlikZAdresatami.h"

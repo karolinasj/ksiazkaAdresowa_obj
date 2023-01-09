@@ -3,12 +3,6 @@
 #include "PlikZAdresatami.h"
 
 
-#include <iostream>
-#include <fstream>
-#include <windows.h>
-#include <vector>
-#include <algorithm>
-#include <sstream>
 
 
 using namespace std;
