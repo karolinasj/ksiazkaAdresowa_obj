@@ -25,13 +25,14 @@ public:
     int dodajAdresata(int idZalogowanegoUzytkownika);
     int idOstatniegoAdresata;
     AdresatMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){
-    idOstatniegoAdresata = 0;
+    //idOstatniegoAdresata = 0;
     };
     int wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika );
     void wyswietlWszystkichAdresatow();
     void wyswietlDaneAdresata(Adresat adresat);
     void wyczyscAdresatow();
-    int sprawdzCzyAdresaciSaWczytani(int idOstatniegoAdresata, int idZalogowanegoUzytkownika);
+    //int sprawdzCzyAdresaciSaWczytani(int idOstatniegoAdresata, int idZalogowanegoUzytkownika);
+    int sprawdzCzyAdresaciSaWczytani(int idZalogowanegoUzytkownika);
 
 };
 #endif

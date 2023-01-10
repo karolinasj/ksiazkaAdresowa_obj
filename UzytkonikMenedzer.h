@@ -18,14 +18,17 @@ class UzytkonikMenedzer
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
+    void ustawIdZalogowanegoUzytkownika(int idZalUzytk);
 
 
 public:
-    UzytkonikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
+    UzytkonikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {idZalogowanegoUzytkownika = 0;};
     void rejestraciaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
     int logowanieUzytkownika();
-    void zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika);
+    void zmianaHaslaZalogowanegoUzytkownika();//int idZalogowanegoUzytkownika);
+
+    int pobierzIdZalogowanegoUzytkownika();
 };
 #endif

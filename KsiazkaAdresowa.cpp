@@ -7,9 +7,11 @@ void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
     uzytkownikMenedzer.rejestraciaUzytkownika();
 }
-int KsiazkaAdresowa::logowanie()
+void KsiazkaAdresowa::logowanie()
 {
+    //idZalogowanegoUzytkownika =
     uzytkownikMenedzer.logowanieUzytkownika();
+    idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
 }
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
@@ -20,7 +22,8 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 void KsiazkaAdresowa::menu()
 {
     char wybor;
-    idZalogowanegoUzytkownika = 0;
+    idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+
     while (true)
     {
         if (idZalogowanegoUzytkownika == 0)
@@ -33,8 +36,7 @@ void KsiazkaAdresowa::menu()
                 rejestracjaUzytkownika();
                 break;
             case '2':
-                //idZalogowanegoUzytkownika = logowanie();
-                idZalogowanegoUzytkownika = uzytkownikMenedzer.logowanieUzytkownika();
+                logowanie();
                 break;
             case '9':
                 exit(0);
@@ -47,14 +49,16 @@ void KsiazkaAdresowa::menu()
         }
         else
         {
-            int idOstatniegoAdresata = 0;
-            idOstatniegoAdresata = ustawIdOstatniegoAdresata(idOstatniegoAdresata, idZalogowanegoUzytkownika);
+            idOstatniegoAdresata = 0;
+            //idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata,idZalogowanegoUzytkownika);
+            wczytajAdresatow();
 
             wybor = wybierzOpcjeZMenuUzytkownika();
 
             switch (wybor)
             {
             case '1':
+
                 idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
 
                 break;
@@ -75,7 +79,7 @@ void KsiazkaAdresowa::menu()
                 //edytujAdresata(adresaci);
                 break;
             case '7':
-                uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
+                uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
                 break;
             case '8':
                 wylogujUzytkownika();
@@ -85,9 +89,10 @@ void KsiazkaAdresowa::menu()
     }
     //return 0;
 }
-int KsiazkaAdresowa::ustawIdOstatniegoAdresata(int idOstatniegoAdresata, int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::wczytajAdresatow()
 {
-    adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata, idZalogowanegoUzytkownika);
+    idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idZalogowanegoUzytkownika);
+    //idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata, idZalogowanegoUzytkownika);
 }
 void KsiazkaAdresowa::wylogujUzytkownika()
 {

@@ -51,18 +51,24 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, 
 }
 int AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
-    idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+    //idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+    plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
+    return idOstatniegoAdresata;
 }
 
 void AdresatMenedzer::wyczyscAdresatow()
 {
     adresaci.clear();
 }
-int AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idOstatniegoAdresata, int idZalogowanegoUzytkownika)
+int AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idZalogowanegoUzytkownika) //AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idOstatniegoAdresata, int idZalogowanegoUzytkownika)
 {
     if (adresaci.empty() == true)
     {
-        idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+        //idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+        plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+        idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
+        return idOstatniegoAdresata;
     }
     else
     {
@@ -99,4 +105,5 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
     }
     system("pause");
 }
+
 

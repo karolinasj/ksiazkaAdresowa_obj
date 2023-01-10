@@ -18,19 +18,21 @@ class KsiazkaAdresowa
     void wyczyscAdresatow();
     void wylogujUzytkownika();
     void rejestracjaUzytkownika();
-    int logowanie();
+    void logowanie();
     void wypiszWszystkichUzytkownikow();
     void wyswietlWszystkichAdresatow();
+    int idZalogowanegoUzytkownika;
 
 public:
 
     void menu();
 
-    int idZalogowanegoUzytkownika;
-    int ustawIdOstatniegoAdresata(int idOstAdr, int idZalogowanegoUzytkownika);
+
+    void wczytajAdresatow();//int idOstAdr);//, int idZalogowanegoUzytkownika);
 
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami){
         uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+        //idOstatniegoAdresata = 0;
 
 }
     };
