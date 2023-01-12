@@ -1,32 +1,24 @@
 #include "AdresatMenedzer.h"
-#include "MetodyPomocnicze.h"
-#include "PlikZAdresatami.h"
 
-
- /*AdresatMenedzer::AdresatMenedzer()
- {
-     idOstatniegoAdresata = 0;
- }*/
-
-int AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika, idOstatniegoAdresata);
+    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
+    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
 
     adresaci.push_back(adresat);
 
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
-
-    return ++idOstatniegoAdresata;
+    plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata)
+Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
-
+    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
     adresat.ustawIdAdresata(++idOstatniegoAdresata);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
@@ -49,32 +41,22 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, 
 
     return adresat;
 }
-int AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
-    //idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
     plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
-    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
-    return idOstatniegoAdresata;
 }
 
 void AdresatMenedzer::wyczyscAdresatow()
 {
     adresaci.clear();
 }
-int AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idZalogowanegoUzytkownika) //AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idOstatniegoAdresata, int idZalogowanegoUzytkownika)
+void AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idZalogowanegoUzytkownika)
 {
     if (adresaci.empty() == true)
     {
-        //idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
         plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
-        idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
-        return idOstatniegoAdresata;
+        plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata());
     }
-    else
-    {
-        return idOstatniegoAdresata;
-    }
-
 }
 void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
 {

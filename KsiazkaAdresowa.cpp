@@ -1,7 +1,4 @@
 #include "KsiazkaAdresowa.h"
-/*#include <windows.h>
-#include <sstream>
-*/
 
 void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
@@ -9,9 +6,7 @@ void KsiazkaAdresowa::rejestracjaUzytkownika()
 }
 void KsiazkaAdresowa::logowanie()
 {
-    //idZalogowanegoUzytkownika =
     uzytkownikMenedzer.logowanieUzytkownika();
-    idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
 }
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
@@ -22,11 +17,10 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 void KsiazkaAdresowa::menu()
 {
     char wybor;
-    idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
 
     while (true)
     {
-        if (idZalogowanegoUzytkownika == 0)
+        if (uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika() == 0)
         {
             wybor = wybierzOpcjeZMenuGlownego();
 
@@ -49,8 +43,6 @@ void KsiazkaAdresowa::menu()
         }
         else
         {
-            idOstatniegoAdresata = 0;
-            //idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata,idZalogowanegoUzytkownika);
             wczytajAdresatow();
 
             wybor = wybierzOpcjeZMenuUzytkownika();
@@ -58,9 +50,7 @@ void KsiazkaAdresowa::menu()
             switch (wybor)
             {
             case '1':
-
-                idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
-
+                adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
                 break;
             case '2':
                 //wyszukajAdresatowPoImieniu(adresaci);
@@ -87,16 +77,14 @@ void KsiazkaAdresowa::menu()
             }
         }
     }
-    //return 0;
 }
 void KsiazkaAdresowa::wczytajAdresatow()
 {
-    idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idZalogowanegoUzytkownika);
-    //idOstatniegoAdresata = adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata, idZalogowanegoUzytkownika);
+    adresatMenedzer.sprawdzCzyAdresaciSaWczytani(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
 }
 void KsiazkaAdresowa::wylogujUzytkownika()
 {
-    idZalogowanegoUzytkownika = 0;
+    uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika(0);
     wyczyscAdresatow();
 }
 void KsiazkaAdresowa::wyczyscAdresatow()

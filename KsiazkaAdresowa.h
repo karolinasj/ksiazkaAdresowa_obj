@@ -9,7 +9,6 @@ using namespace std;
 
 class KsiazkaAdresowa
 {
-    int idOstatniegoAdresata;
     /*int idUsunietegoAdresata;*/
     UzytkonikMenedzer uzytkownikMenedzer;
     AdresatMenedzer adresatMenedzer;
@@ -21,21 +20,15 @@ class KsiazkaAdresowa
     void logowanie();
     void wypiszWszystkichUzytkownikow();
     void wyswietlWszystkichAdresatow();
-    int idZalogowanegoUzytkownika;
+    void wczytajAdresatow();
 
 public:
 
-    void menu();
-
-
-    void wczytajAdresatow();//int idOstAdr);//, int idZalogowanegoUzytkownika);
-
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami){
         uzytkownikMenedzer.wczytajUzytkownikowZPliku();
-        //idOstatniegoAdresata = 0;
+    }
+    void menu();
 
-}
-    };
-
+};
 
 #endif
