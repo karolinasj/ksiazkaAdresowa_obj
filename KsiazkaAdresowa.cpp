@@ -20,7 +20,9 @@ void KsiazkaAdresowa::menu()
 
     while (true)
     {
-        if (uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika() == 0)
+        int idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+
+        if (idZalogowanegoUzytkownika == 0)
         {
             wybor = wybierzOpcjeZMenuGlownego();
 
@@ -50,7 +52,8 @@ void KsiazkaAdresowa::menu()
             switch (wybor)
             {
             case '1':
-                adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+                //adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+                adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
                 break;
             case '2':
                 //wyszukajAdresatowPoImieniu(adresaci);

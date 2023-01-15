@@ -27,28 +27,23 @@ __
       <h>340</h>
     </coordinates>
     <panel_attributes>KsiazkaAdresowa
---
-
-- idOstatniegoAdresata : integer
+-
 //- idUsunietegoAdresata : integer/
 - uzytkownikMenedzer : UzytkonikMenedzer
 - adresatMenedzer : AdresatMenedzer
-+ idZalogowanegoUzytkownika : integer
-
 --
-
 + KsiazkaAdresowa()
-- rejestracjaUzytkownika() : void
-- wypiszWszystkichUzytkownikow() : void
 - wybierzOpcjeZMenuGlownego() : char
 - wybierzOpcjeZMenuUzytkownika() : char
 - wyczyscAdresatow() : void
 - wylogujUzytkownika() : void
-+ menu() : void
+- rejestracjaUzytkownika() : void
 - logowanie() : integer *--&gt;czy potrzebuję f. logowanie czy 
 mogę odwołać się do f. z UżytkownikMenager*
+- wypiszWszystkichUzytkownikow() : void
 - wyswietlWszystkichAdresatow() : void
-+ ustawIdOstatniegoAdresata() : integer
+- wczytajAdresatow() : void
++ menu() : void
 
 
 
@@ -66,18 +61,18 @@ mogę odwołać się do f. z UżytkownikMenager*
     </coordinates>
     <panel_attributes>UzytkownikMenedzer
 --
-- idZalogowanegoUzytkownika : integer
-- uzytkownicy : vector &lt;Uzytkownik&gt;
 - plikZUzytkownikami : PlikZUzytkownikami
+- uzytkownicy : vector &lt;Uzytkownik&gt;
+- idZalogowanegoUzytkownika : integer
 --
++ UzytkonikMenedzer()
 - podajDaneNowegoUzytkownika() : Uzytkownik
 - pobierzIdNowegoUzytkownika() : integer
-- czyIstniejeLogin(): bool 
-+ UzytkonikMenedzer()
+- czyIstniejeLogin(): bool
 + rejestracjaUzytkownika() : void
 + wypiszWszystkichUzytkownikow() : void
-+ logowanieUzytkownika() : integer
 + wczytajUzytkownikowZPliku() : void
++ logowanieUzytkownika() : integer
 + zmianaHaslaZalogowanegoUzytkownika() : void
 </panel_attributes>
     <additional_attributes/>
@@ -96,11 +91,11 @@ mogę odwołać się do f. z UżytkownikMenager*
 - daneJednegoUzytkownikaOddzielonePionowymiKreskami : string
 --
 + PlikZUzytkownikami()
-+ dopiszUzytkownikaDoPliku() : void 
 - czyPlikJestPusty() : bool
 - zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami() : string 
-+ wczytajUzytkownikowZPliku() : vector
 - pobierzDaneUzytkownika() : Uzytkownik
++ dopiszUzytkownikaDoPliku() : void 
++ wczytajUzytkownikowZPliku() : vector
 + zapiszWszystkichUzytkownikowDoPliku() : void</panel_attributes>
     <additional_attributes/>
   </element>
@@ -129,7 +124,7 @@ mogę odwołać się do f. z UżytkownikMenager*
     <coordinates>
       <x>540</x>
       <y>540</y>
-      <w>360</w>
+      <w>400</w>
       <h>220</h>
     </coordinates>
     <panel_attributes>AdresatMenedzer
@@ -140,9 +135,9 @@ mogę odwołać się do f. z UżytkownikMenager*
 --
 + AdresatMenedzer()
 - podajDaneNowegoAdresata() : Adresat
-+ dodajAdresata() : integer
++ dodajAdresata() : void
 + wyswietlWszystkichAdresatow() : void
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku() : integer
++ wczytajAdresatowZalogowanegoUzytkownikaZPliku() : void
 + wyswietlDaneAdresata(): void
 + wyczyscAdresatow(): void
 + sprawdzCzyAdresaciSaWczytani() : integer
@@ -153,7 +148,7 @@ bg=yellow
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
+      <x>960</x>
       <y>520</y>
       <w>190</w>
       <h>170</h>
@@ -181,15 +176,16 @@ bg=yellow
     </coordinates>
     <panel_attributes>PlikZAdresatami
 --
-+ nazwaPlikuZAdresatami : string
+- nazwaPlikuZAdresatami : string
+- idOstatniegoAdresata : integer
 --
-- zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami() : string 
-+ dopiszAdresataDoPliku() : void
 + PlikZAdresatami()
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku() : integer
-+ pobierzDaneAdresata() : Adresat
-+ pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami() : integer
-+ pobierzIdAdresataZDanychOddzielonychPionowymiKreskami() : integer
+- zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami() : string 
+- pobierzDaneAdresata() : Adresat
+- pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami() : integer
+- pobierzIdAdresataZDanychOddzielonychPionowymiKreskami() : integer
++ dopiszAdresataDoPliku() : void
++ wczytajAdresatowZalogowanegoUzytkownikaZPliku() : void
 
 bg=yellow</panel_attributes>
     <additional_attributes/>
