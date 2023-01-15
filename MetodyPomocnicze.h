@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include<sstream>
+#include <algorithm>
 #include "Uzytkownik.h"
 
 using namespace std;

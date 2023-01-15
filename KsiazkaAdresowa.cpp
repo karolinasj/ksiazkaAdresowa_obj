@@ -1,13 +1,10 @@
 #include "KsiazkaAdresowa.h"
-/*#include <windows.h>
-#include <sstream>
-*/
 
 void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
     uzytkownikMenedzer.rejestraciaUzytkownika();
 }
-int KsiazkaAdresowa::logowanie()
+void KsiazkaAdresowa::logowanie()
 {
     uzytkownikMenedzer.logowanieUzytkownika();
 }
@@ -20,9 +17,11 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 void KsiazkaAdresowa::menu()
 {
     char wybor;
-    idZalogowanegoUzytkownika = 0;
+
     while (true)
     {
+        int idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+
         if (idZalogowanegoUzytkownika == 0)
         {
             wybor = wybierzOpcjeZMenuGlownego();
@@ -33,8 +32,7 @@ void KsiazkaAdresowa::menu()
                 rejestracjaUzytkownika();
                 break;
             case '2':
-                //idZalogowanegoUzytkownika = logowanie();
-                idZalogowanegoUzytkownika = uzytkownikMenedzer.logowanieUzytkownika();
+                logowanie();
                 break;
             case '9':
                 exit(0);
@@ -47,16 +45,15 @@ void KsiazkaAdresowa::menu()
         }
         else
         {
-            int idOstatniegoAdresata = 0;
-            idOstatniegoAdresata = ustawIdOstatniegoAdresata(idOstatniegoAdresata, idZalogowanegoUzytkownika);
+            wczytajAdresatow();
 
             wybor = wybierzOpcjeZMenuUzytkownika();
 
             switch (wybor)
             {
             case '1':
-                idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
-
+                //adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+                adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
                 break;
             case '2':
                 //wyszukajAdresatowPoImieniu(adresaci);
@@ -75,7 +72,7 @@ void KsiazkaAdresowa::menu()
                 //edytujAdresata(adresaci);
                 break;
             case '7':
-                uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
+                uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
                 break;
             case '8':
                 wylogujUzytkownika();
@@ -83,15 +80,14 @@ void KsiazkaAdresowa::menu()
             }
         }
     }
-    //return 0;
 }
-int KsiazkaAdresowa::ustawIdOstatniegoAdresata(int idOstatniegoAdresata, int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::wczytajAdresatow()
 {
-    adresatMenedzer.sprawdzCzyAdresaciSaWczytani(idOstatniegoAdresata, idZalogowanegoUzytkownika);
+    adresatMenedzer.sprawdzCzyAdresaciSaWczytani(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
 }
 void KsiazkaAdresowa::wylogujUzytkownika()
 {
-    idZalogowanegoUzytkownika = 0;
+    uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika(0);
     wyczyscAdresatow();
 }
 void KsiazkaAdresowa::wyczyscAdresatow()
