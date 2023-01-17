@@ -1,26 +1,29 @@
 #include "AdresatMenedzer.h"
 
-void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::dodajAdresata()
 {
     Adresat adresat;
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
-    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
-
+    adresat = podajDaneNowegoAdresata();
     adresaci.push_back(adresat);
 
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
-    plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
+    if(plikZAdresatami.dopiszAdresataDoPliku(adresat))
+    {
+        cout << "Nowy adresat zostal dodany" << endl;
+    }
+    else
+        cout << "Blad. Nie udalo sie dodac nowego adresata do pliku"<<endl;
+    system("pause");
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
+Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
-    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
-    adresat.ustawIdAdresata(++idOstatniegoAdresata);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
     adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
@@ -39,22 +42,25 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
     cout << "Podaj adres: ";
     adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
 
+
+
     return adresat;
 }
-void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
-    plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+    plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, ID_ZALOGOWANEGO_UZYTKOWNIKA);
 }
 
 void AdresatMenedzer::wyczyscAdresatow()
 {
     adresaci.clear();
 }
-void AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::sprawdzCzyAdresaciSaWczytani()
 {
+
     if (adresaci.empty() == true)
     {
-        plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+        plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, ID_ZALOGOWANEGO_UZYTKOWNIKA);
         plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata());
     }
 }
@@ -87,5 +93,6 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
     }
     system("pause");
 }
+
 
 

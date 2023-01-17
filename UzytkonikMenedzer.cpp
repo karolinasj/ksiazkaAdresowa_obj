@@ -65,11 +65,6 @@ void UzytkonikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkonikMenedzer::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 int UzytkonikMenedzer::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
@@ -81,7 +76,6 @@ int UzytkonikMenedzer::logowanieUzytkownika()
     vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
     while (itr != uzytkownicy.end())
     {
-        //if (itr -> login == login)
         if (itr -> pobierzLogin() == login)
         {
             for (int iloscProb = 3; iloscProb > 0; iloscProb--)
@@ -93,30 +87,23 @@ int UzytkonikMenedzer::logowanieUzytkownika()
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    //return itr -> pobierzId();
-                    ustawIdZalogowanegoUzytkownika(itr -> pobierzId());
-
+                    idZalogowanegoUzytkownika = (itr -> pobierzId());
                     return idZalogowanegoUzytkownika;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            ustawIdZalogowanegoUzytkownika(0);
-            //return 0;
+            idZalogowanegoUzytkownika = 0;
             return idZalogowanegoUzytkownika;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
-    ustawIdZalogowanegoUzytkownika(0);
+    idZalogowanegoUzytkownika = 0;
     return idZalogowanegoUzytkownika;
 }
 
-void UzytkonikMenedzer::ustawIdZalogowanegoUzytkownika(int idZalUzytk)
-{
-    idZalogowanegoUzytkownika = idZalUzytk;
-}
 void UzytkonikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 {
     string noweHaslo = "";
@@ -133,4 +120,17 @@ void UzytkonikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
         }
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+
+bool UzytkonikMenedzer::czyUzytkownikJestZalogowany()
+{
+    if (idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
+}
+
+void UzytkonikMenedzer::wylogujUzytkownika()
+{
+    idZalogowanegoUzytkownika = 0;
 }
