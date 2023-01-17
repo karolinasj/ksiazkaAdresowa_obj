@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1210</x>
-      <y>100</y>
+      <x>1020</x>
+      <y>210</y>
       <w>220</w>
       <h>120</h>
     </coordinates>
@@ -22,28 +22,26 @@ __
     <id>UMLClass</id>
     <coordinates>
       <x>110</x>
-      <y>90</y>
+      <y>20</y>
       <w>380</w>
-      <h>340</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes>KsiazkaAdresowa
 -
 //- idUsunietegoAdresata : integer/
 - uzytkownikMenedzer : UzytkonikMenedzer
 - adresatMenedzer : AdresatMenedzer
+- string: NAZWA_PLIKU_Z_ADRESATAMI
 --
 + KsiazkaAdresowa()
-- wybierzOpcjeZMenuGlownego() : char
-- wybierzOpcjeZMenuUzytkownika() : char
-- wyczyscAdresatow() : void
-- wylogujUzytkownika() : void
-- rejestracjaUzytkownika() : void
-- logowanie() : integer *--&gt;czy potrzebuję f. logowanie czy 
-mogę odwołać się do f. z UżytkownikMenager*
 - wypiszWszystkichUzytkownikow() : void
-- wyswietlWszystkichAdresatow() : void
-- wczytajAdresatow() : void
-+ menu() : void
++ czyUzytkownikJestZalogowany() : bool
++ wylogujUzytkownika() : void
++ rejestracjaUzytkownika() : void
++ logowanie() : void 
++ zmianaHasla() : void
++ dodajAdresata() : void
++ wyswietlWszystkichAdresatow() : void
 
 
 
@@ -55,7 +53,7 @@ mogę odwołać się do f. z UżytkownikMenager*
     <id>UMLClass</id>
     <coordinates>
       <x>500</x>
-      <y>90</y>
+      <y>20</y>
       <w>390</w>
       <h>240</h>
     </coordinates>
@@ -71,9 +69,13 @@ mogę odwołać się do f. z UżytkownikMenager*
 - czyIstniejeLogin(): bool
 + rejestracjaUzytkownika() : void
 + wypiszWszystkichUzytkownikow() : void
-+ wczytajUzytkownikowZPliku() : void
 + logowanieUzytkownika() : integer
 + zmianaHaslaZalogowanegoUzytkownika() : void
++ pobierzIdZalogowanegoUzytkownika() : integer
++ czyUzytkownikJestZalogowany() : bool
++ wylogujUzytkownika() : void
+
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -81,13 +83,13 @@ mogę odwołać się do f. z UżytkownikMenager*
     <id>UMLClass</id>
     <coordinates>
       <x>900</x>
-      <y>90</y>
+      <y>20</y>
       <w>300</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>PlikZUzytkownikami
 --
-- nazwaPlikuZUzytkownikami : string
+- NAZWA_PLIKU_Z_UZYTKOWNIKAMI : string
 - daneJednegoUzytkownikaOddzielonePionowymiKreskami : string
 --
 + PlikZUzytkownikami()
@@ -102,8 +104,8 @@ mogę odwołać się do f. z UżytkownikMenager*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>360</y>
+      <x>940</x>
+      <y>540</y>
       <w>300</w>
       <h>140</h>
     </coordinates>
@@ -122,8 +124,8 @@ mogę odwołać się do f. z UżytkownikMenager*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>540</y>
+      <x>570</x>
+      <y>280</y>
       <w>400</w>
       <h>220</h>
     </coordinates>
@@ -131,14 +133,14 @@ mogę odwołać się do f. z UżytkownikMenager*
 --
 - adresaci: vector &lt;Adresat&gt;
 - plikZAdresatami: PlikZAdresatami
-+ idOstatniegoAdresata: integer
+- ID_ZALOGOWANEGO_UZYTKOWNIKA : integer
 --
 + AdresatMenedzer()
 - podajDaneNowegoAdresata() : Adresat
+- wczytajAdresatowZalogowanegoUzytkownikaZPliku() : void
+- wyswietlDaneAdresata() : void
 + dodajAdresata() : void
 + wyswietlWszystkichAdresatow() : void
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku() : void
-+ wyswietlDaneAdresata(): void
 + wyczyscAdresatow(): void
 + sprawdzCzyAdresaciSaWczytani() : integer
 bg=yellow
@@ -148,8 +150,8 @@ bg=yellow
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>520</y>
+      <x>1040</x>
+      <y>350</y>
       <w>190</w>
       <h>170</h>
     </coordinates>
@@ -169,14 +171,14 @@ bg=yellow
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>460</y>
+      <x>40</x>
+      <y>280</y>
       <w>520</w>
-      <h>170</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>PlikZAdresatami
 --
-- nazwaPlikuZAdresatami : string
+- NAZWA_PLIKU_Z_ADRESATAMI : string
 - idOstatniegoAdresata : integer
 --
 + PlikZAdresatami()
@@ -184,23 +186,12 @@ bg=yellow
 - pobierzDaneAdresata() : Adresat
 - pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami() : integer
 - pobierzIdAdresataZDanychOddzielonychPionowymiKreskami() : integer
-+ dopiszAdresataDoPliku() : void
++ dopiszAdresataDoPliku() : bool
 + wczytajAdresatowZalogowanegoUzytkownikaZPliku() : void
++ ustawIdOstatniegoAdresata() : void
++ pobierzIdOstatniegoAdresata() : integer
 
 bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>580</x>
-      <y>350</y>
-      <w>260</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>nazwa pliku z adresatami
-
-bg=red</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

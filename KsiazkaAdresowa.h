@@ -16,11 +16,9 @@ class KsiazkaAdresowa
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
     void wyczyscAdresatow();
-    void wylogujUzytkownika();
-    void rejestracjaUzytkownika();
-    void logowanie();
+;
     void wypiszWszystkichUzytkownikow();
-    void wyswietlWszystkichAdresatow();
+
 
 public:
 
@@ -33,7 +31,15 @@ public:
         delete adresatMenedzer;
         adresatMenedzer = NULL;
     };
-    void menu();
+    //void menu();
+    bool czyUzytkownikJestZalogowany();
+    void wylogujUzytkownika();
+    void rejestracjaUzytkownika();
+    void logowanie();
+    void zmianaHasla();
+    void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
+    int pobierzIdZalogowanegoUzytkownikaZUzytkonikMenedzer();
 };
 
 #endif
