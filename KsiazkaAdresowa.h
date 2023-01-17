@@ -9,9 +9,10 @@ using namespace std;
 
 class KsiazkaAdresowa
 {
-    /*int idUsunietegoAdresata;*/
     UzytkonikMenedzer uzytkownikMenedzer;
-    AdresatMenedzer adresatMenedzer;
+    AdresatMenedzer *adresatMenedzer;
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
+
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
     void wyczyscAdresatow();
@@ -23,8 +24,15 @@ class KsiazkaAdresowa
 
 public:
 
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami){
-    }
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    {
+        adresatMenedzer = NULL;
+    };
+    ~KsiazkaAdresowa()
+    {
+        delete adresatMenedzer;
+        adresatMenedzer = NULL;
+    };
     void menu();
 };
 

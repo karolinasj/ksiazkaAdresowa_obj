@@ -22,7 +22,7 @@ class PlikZAdresatami
 public:
     PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami){};
 
-    void dopiszAdresataDoPliku(Adresat adresat);
+    bool dopiszAdresataDoPliku(Adresat adresat);
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika);
     void ustawIdOstatniegoAdresata(int noweOstatnieId);
     int pobierzIdOstatniegoAdresata();

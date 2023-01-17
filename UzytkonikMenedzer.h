@@ -26,10 +26,10 @@ public:
     };
     void rejestraciaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    //void wczytajUzytkownikowZPliku();
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     int pobierzIdZalogowanegoUzytkownika();
-    void ustawIdZalogowanegoUzytkownika(int idZalUzytk);
+    bool czyUzytkownikJestZalogowany();
+    void wylogujUzytkownika();
 };
 #endif
