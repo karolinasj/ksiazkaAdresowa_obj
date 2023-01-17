@@ -6,7 +6,8 @@ void KsiazkaAdresowa::rejestracjaUzytkownika()
 }
 void KsiazkaAdresowa::logowanie()
 {
-    uzytkownikMenedzer.logowanieUzytkownika();
+    adresatMenedzer.ustawIdZalogowanegoUzytkownika(uzytkownikMenedzer.logowanieUzytkownika());
+    adresatMenedzer.sprawdzCzyAdresaciSaWczytani();
 }
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
@@ -45,15 +46,12 @@ void KsiazkaAdresowa::menu()
         }
         else
         {
-            wczytajAdresatow();
-
             wybor = wybierzOpcjeZMenuUzytkownika();
 
             switch (wybor)
             {
             case '1':
-                //adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-                adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
+                adresatMenedzer.dodajAdresata();
                 break;
             case '2':
                 //wyszukajAdresatowPoImieniu(adresaci);
@@ -81,10 +79,7 @@ void KsiazkaAdresowa::menu()
         }
     }
 }
-void KsiazkaAdresowa::wczytajAdresatow()
-{
-    adresatMenedzer.sprawdzCzyAdresaciSaWczytani(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-}
+
 void KsiazkaAdresowa::wylogujUzytkownika()
 {
     uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika(0);

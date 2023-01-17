@@ -1,25 +1,23 @@
 #include "AdresatMenedzer.h"
 
-void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::dodajAdresata()
 {
     Adresat adresat;
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
-    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
-
+    adresat = podajDaneNowegoAdresata();
     adresaci.push_back(adresat);
 
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
     plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
+Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
-    idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegoAdresata();
-    adresat.ustawIdAdresata(++idOstatniegoAdresata);
+
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";
@@ -41,7 +39,7 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 
     return adresat;
 }
-void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
     plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
 }
@@ -50,8 +48,9 @@ void AdresatMenedzer::wyczyscAdresatow()
 {
     adresaci.clear();
 }
-void AdresatMenedzer::sprawdzCzyAdresaciSaWczytani(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::sprawdzCzyAdresaciSaWczytani()
 {
+
     if (adresaci.empty() == true)
     {
         plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
@@ -86,6 +85,11 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
+}
+
+void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int id)
+{
+    idZalogowanegoUzytkownika = id;
 }
 
 

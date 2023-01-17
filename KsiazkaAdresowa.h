@@ -20,15 +20,12 @@ class KsiazkaAdresowa
     void logowanie();
     void wypiszWszystkichUzytkownikow();
     void wyswietlWszystkichAdresatow();
-    void wczytajAdresatow();
 
 public:
 
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami){
-        uzytkownikMenedzer.wczytajUzytkownikowZPliku();
     }
     void menu();
-
 };
 
 #endif
