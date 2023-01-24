@@ -9,8 +9,7 @@
 
 using namespace std;
 
-class UzytkonikMenedzer
-{
+class UzytkonikMenedzer {
     PlikZUzytkownikami plikZUzytkownikami;
     vector <Uzytkownik> uzytkownicy;
     int idZalogowanegoUzytkownika;
@@ -19,8 +18,7 @@ class UzytkonikMenedzer
     bool czyIstniejeLogin(string login);
 
 public:
-    UzytkonikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami)
-    {
+    UzytkonikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
         idZalogowanegoUzytkownika = 0;
         uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
     };

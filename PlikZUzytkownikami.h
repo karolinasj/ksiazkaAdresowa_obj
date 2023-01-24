@@ -9,8 +9,7 @@
 
 using namespace std;
 
-class PlikZUzytkownikami
-{
+class PlikZUzytkownikami {
     const string NAZWA_PLIKU_Z_UZYTKOWNIKAMI;
     string daneJednegoUzytkownikaOddzielonePionowymiKreskami;
 
