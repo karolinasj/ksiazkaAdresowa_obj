@@ -39,6 +39,7 @@ public:
     void sprawdzCzyAdresaciSaWczytani();
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
-    Adresat edytujAdresata();
+    void edytujAdresata();
+    void usunAdresata();
 };
 #endif

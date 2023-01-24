@@ -28,6 +28,7 @@ public:
     void ustawIdOstatniegoAdresata(int noweOstatnieId);
     int pobierzIdOstatniegoAdresata();
     void edytujWybranaLinieWPliku(Adresat adresatKtoryBylEdytowany);
+    void usunWybranaLinieWPliku(int idUsuwanegoAdresata);
 };
 
 #endif
