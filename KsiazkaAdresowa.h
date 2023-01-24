@@ -26,7 +26,6 @@ public:
         delete adresatMenedzer;
         adresatMenedzer = NULL;
     };
-    //void menu();
     bool czyUzytkownikJestZalogowany();
     void wylogujUzytkownika();
     void rejestracjaUzytkownika();

@@ -78,14 +78,16 @@ int KsiazkaAdresowa::pobierzIdZalogowanegoUzytkownikaZUzytkonikMenedzer() {
     int idZalogowanego = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
     return idZalogowanego;
 }
-void KsiazkaAdresowa::wyszukajAdresatowPoImieniu(){
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
     adresatMenedzer->wyszukajAdresatowPoImieniu();
 }
-void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku(){
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
     adresatMenedzer->wyszukajAdresatowPoNazwisku();
 }
-void KsiazkaAdresowa::edytujAdresata(){
-    adresatMenedzer ->edytujAdresata();}
+void KsiazkaAdresowa::edytujAdresata() {
+    adresatMenedzer ->edytujAdresata();
+}
 
- void KsiazkaAdresowa::usunAdresata(){
-    adresatMenedzer ->usunAdresata();}
+void KsiazkaAdresowa::usunAdresata() {
+    adresatMenedzer ->usunAdresata();
+}

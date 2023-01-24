@@ -8,7 +8,6 @@ bool PlikTekstowy::czyPlikJestPusty(fstream &plikTekstowy) {
         return false;
 }
 
-string PlikTekstowy::pobierzNazwePliku()
-{
+string PlikTekstowy::pobierzNazwePliku() {
     return NAZWA_PLIKU;
 }

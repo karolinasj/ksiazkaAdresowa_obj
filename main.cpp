@@ -8,7 +8,7 @@ using namespace std;
 
 
 int main() {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy_test.txt", "Adresaci_test.txt");
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.rejestracjaUzytkownika();
@@ -54,7 +54,6 @@ int main() {
                 break;
             case '5':
                 ksiazkaAdresowa.usunAdresata();
-                //idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
                 break;
             case '6':
                 ksiazkaAdresowa.edytujAdresata();

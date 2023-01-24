@@ -1,3 +1,6 @@
+#ifndef PLIKTEKSTOWY_H
+#define PLIKTEKSTOWY_H
+
 #include <fstream>
 
 using namespace std;
@@ -11,3 +14,4 @@ public:
     bool czyPlikJestPusty(fstream &plikTekstowy);
     string pobierzNazwePliku();
 };
+#endif
