@@ -1,22 +1,19 @@
 #include "MetodyPomocnicze.h"
 
-string MetodyPomocnicze::wczytajLinie()
-{
+string MetodyPomocnicze::wczytajLinie() {
     string wejscie = "";
     getline(cin, wejscie);
     return wejscie;
 }
 
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
-{
+string MetodyPomocnicze::konwerjsaIntNaString(int liczba) {
     ostringstream ss;
     ss << liczba;
     string str = ss.str();
     return str;
 }
 
-int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
-{
+int MetodyPomocnicze::konwersjaStringNaInt(string liczba) {
     int liczbaInt;
     istringstream iss(liczba);
     iss >> liczbaInt;
@@ -24,11 +21,9 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
     return liczbaInt;
 }
 
-string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
-{
+string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true)
-    {
+    while(isdigit(tekst[pozycjaZnaku]) == true) {
         liczba += tekst[pozycjaZnaku];
         pozycjaZnaku ++;
     }
@@ -36,17 +31,14 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
 }
 
 
-char MetodyPomocnicze::wczytajZnak()
-{
+char MetodyPomocnicze::wczytajZnak() {
     string wejscie = "";
     char znak  = {0};
 
-    while (true)
-    {
+    while (true) {
         getline(cin, wejscie);
 
-        if (wejscie.length() == 1)
-        {
+        if (wejscie.length() == 1) {
             znak = wejscie[0];
             break;
         }
@@ -55,8 +47,7 @@ char MetodyPomocnicze::wczytajZnak()
     return znak;
 }
 
-bool MetodyPomocnicze::czyPlikJestPusty(fstream &plikTekstowy)
-{
+bool MetodyPomocnicze::czyPlikJestPusty(fstream &plikTekstowy) {
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0)
         return true;
@@ -64,12 +55,25 @@ bool MetodyPomocnicze::czyPlikJestPusty(fstream &plikTekstowy)
         return false;
 }
 
-string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
-{
-    if (!tekst.empty())
-    {
+string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) {
+    if (!tekst.empty()) {
         transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
         tekst[0] = toupper(tekst[0]);
     }
     return tekst;
+}
+int MetodyPomocnicze::wczytajLiczbeCalkowita(){
+    string wejscie = "";
+    int liczba = 0;
+
+    while (true)
+    {
+        getline(cin, wejscie);
+
+        stringstream myStream(wejscie);
+        if (myStream >> liczba)
+            break;
+        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
+    }
+    return liczba;
 }

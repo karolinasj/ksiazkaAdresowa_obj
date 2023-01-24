@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class MetodyPomocnicze
-{
+class MetodyPomocnicze {
 
 public:
     static string konwerjsaIntNaString(int liczba);
@@ -22,6 +21,7 @@ public:
     static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
     static int konwersjaStringNaInt(string liczba);
+    static int wczytajLiczbeCalkowita();
 
 };
 #endif
