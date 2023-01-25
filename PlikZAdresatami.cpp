@@ -185,6 +185,10 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int idUsuwanegoAdresata) {
             idWczytanegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia);
             if (idWczytanegoAdresata == idUsuwanegoAdresata) {
                 numerWczytanejLinii--;
+                if (idUsuwanegoAdresata == idOstatniegoAdresata){
+                    idOstatniegoAdresata--;
+                }
+
             } else if (numerWczytanejLinii == 1 ) {
                 tymczasowyPlikTekstowy << wczytanaLinia;
             }
@@ -192,7 +196,7 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int idUsuwanegoAdresata) {
             else if (numerWczytanejLinii > 1 ) {
                 tymczasowyPlikTekstowy << endl << wczytanaLinia;
             }
-            numerWczytanejLinii++;//UUUU
+            numerWczytanejLinii++;
 
         }
         odczytywanyPlikTekstowy.close();
